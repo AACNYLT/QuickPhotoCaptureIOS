@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C0DA9A4721A9E374000CDD83 /* ServerOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DA9A4621A9E374000CDD83 /* ServerOperations.swift */; };
 		C0E1E14E21A89C1B001AC5E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E1E14D21A89C1B001AC5E4 /* AppDelegate.swift */; };
 		C0E1E15021A89C1B001AC5E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E1E14F21A89C1B001AC5E4 /* ViewController.swift */; };
 		C0E1E15321A89C1B001AC5E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0E1E15121A89C1B001AC5E4 /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C0DA9A4621A9E374000CDD83 /* ServerOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerOperations.swift; sourceTree = "<group>"; };
 		C0E1E14A21A89C1B001AC5E4 /* NYLT Quick Photo Capture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NYLT Quick Photo Capture.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0E1E14D21A89C1B001AC5E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0E1E14F21A89C1B001AC5E4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 				C0E1E15421A89C1C001AC5E4 /* Assets.xcassets */,
 				C0E1E15621A89C1C001AC5E4 /* LaunchScreen.storyboard */,
 				C0E1E15921A89C1C001AC5E4 /* Info.plist */,
+				C0DA9A4621A9E374000CDD83 /* ServerOperations.swift */,
 			);
 			path = "NYLT Quick Photo Capture";
 			sourceTree = "<group>";
@@ -199,6 +202,7 @@
 			files = (
 				C0E1E15021A89C1B001AC5E4 /* ViewController.swift in Sources */,
 				C0E1E14E21A89C1B001AC5E4 /* AppDelegate.swift in Sources */,
+				C0DA9A4721A9E374000CDD83 /* ServerOperations.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
