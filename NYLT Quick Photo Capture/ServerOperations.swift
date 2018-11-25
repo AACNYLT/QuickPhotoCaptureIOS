@@ -28,4 +28,6 @@ class CampHubScouts {
         })
         task.resume()
     }
+    
+    func upload() {}
 }
