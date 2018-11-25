@@ -44,10 +44,14 @@
                     <navigationItem key="navigationItem" title="NYLT Quick Photo Capture" id="YnA-Zb-npX">
                         <barButtonItem key="leftBarButtonItem" title="Load" id="oaC-cb-Qv2">
                             <connections>
-                                <action selector="getScouts" destination="U1w-uJ-x75" id="dfd-pW-ug0"/>
+                                <action selector="showImportMenu:" destination="U1w-uJ-x75" id="tAZ-hX-JqO"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Export" id="dwc-Ss-2ZH"/>
+                        <barButtonItem key="rightBarButtonItem" title="Export" id="dwc-Ss-2ZH">
+                            <connections>
+                                <action selector="showExportMenu:" destination="U1w-uJ-x75" id="kO7-5e-gEA"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oyc-kl-5uc" userLabel="First Responder" sceneMemberID="firstResponder"/>

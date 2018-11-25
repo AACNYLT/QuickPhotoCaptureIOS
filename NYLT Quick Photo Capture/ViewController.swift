@@ -12,8 +12,10 @@ class ScoutTableViewController: UITableViewController, UINavigationControllerDel
     
     // MARK: Data Source
     var scouts: [Scout] = []
-    @IBAction func getScouts() {
+    func getScouts() {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         CampHubScouts().get(withCompletion: {(scoutResults: [Scout]?) -> Void in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
             if (scoutResults == nil) {
                 let alert = UIAlertController(title: "Error", message: "We weren't able to load scouts - make sure you have an internet connection.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
@@ -25,9 +27,8 @@ class ScoutTableViewController: UITableViewController, UINavigationControllerDel
         })
     }
     
-    var images: [UIImage] = []
-    
     var imagePicker: UIImagePickerController!
+    var selectedScout: Scout!
     
     // MARK: Overrides
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -59,21 +60,47 @@ class ScoutTableViewController: UITableViewController, UINavigationControllerDel
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
         imagePicker.dismiss(animated: true, completion: nil)
-        guard let takenImage = info[.originalImage] as? UIImage else {
-            print("Image not found!")
+        let fileManager = FileManager.default
+        let documentsPath = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
+        let imagePath = documentsPath?.appendingPathComponent(selectedScout.FirstName + selectedScout.LastName + "-" + String(selectedScout.ScoutID) + ".jpg")
+        if let takenImage = info[.editedImage] as? UIImage {
+            try? takenImage.jpegData(compressionQuality: 0.5)?.write(to: imagePath!)
+        } else {
             return
         }
-        images.append(takenImage)
     }
     
     // MARK: photo stuff
     func takePhoto(scout: Scout) {
+        selectedScout = scout;
         imagePicker =  UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = .camera
+        imagePicker.allowsEditing = true
         present(imagePicker, animated: true, completion: nil)
     }
     
+    // MARK: menus
+    
+    @IBAction func showExportMenu(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: "Export", message: "Export the photos you've taken online or locally in a file.", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Local File", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Upload to CampHub", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.popoverPresentationController?.barButtonItem = sender
+        self.present(alert, animated: true)
+    }
+    
+    @IBAction func showImportMenu(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: "Load Scouts", message: "Populate the app with scouts.", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Local File", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Download from CampHub", style: .default, handler:{(action: UIAlertAction) -> Void in
+            self.getScouts()
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.popoverPresentationController?.barButtonItem = sender
+        self.present(alert, animated: true)
+    }
 }
 
 struct Scout: Codable {
