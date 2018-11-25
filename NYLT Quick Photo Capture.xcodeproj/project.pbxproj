@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		274BE20EF9357CC3FB4EACAE /* Pods_NYLT_Quick_Photo_Capture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94DBD5AEBBDF820211FFF0C5 /* Pods_NYLT_Quick_Photo_Capture.framework */; };
+		5963BFA2216391DDB67A57AF /* Pods_NYLT_Quick_Photo_CaptureTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDA1001AEB1A6488C47E6E22 /* Pods_NYLT_Quick_Photo_CaptureTests.framework */; };
 		C0DA9A4721A9E374000CDD83 /* ServerOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DA9A4621A9E374000CDD83 /* ServerOperations.swift */; };
 		C0E1E14E21A89C1B001AC5E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E1E14D21A89C1B001AC5E4 /* AppDelegate.swift */; };
 		C0E1E15021A89C1B001AC5E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E1E14F21A89C1B001AC5E4 /* ViewController.swift */; };
@@ -27,6 +29,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		31B7A88246F17A2EE164BE41 /* Pods-NYLT Quick Photo CaptureTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYLT Quick Photo CaptureTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NYLT Quick Photo CaptureTests/Pods-NYLT Quick Photo CaptureTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6B384C750334B6E4124FA017 /* Pods-NYLT Quick Photo Capture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYLT Quick Photo Capture.release.xcconfig"; path = "Pods/Target Support Files/Pods-NYLT Quick Photo Capture/Pods-NYLT Quick Photo Capture.release.xcconfig"; sourceTree = "<group>"; };
+		94DBD5AEBBDF820211FFF0C5 /* Pods_NYLT_Quick_Photo_Capture.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NYLT_Quick_Photo_Capture.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		99EEAD12F058E3FFF4A4BC19 /* Pods-NYLT Quick Photo CaptureTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYLT Quick Photo CaptureTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NYLT Quick Photo CaptureTests/Pods-NYLT Quick Photo CaptureTests.release.xcconfig"; sourceTree = "<group>"; };
 		C0DA9A4621A9E374000CDD83 /* ServerOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerOperations.swift; sourceTree = "<group>"; };
 		C0E1E14A21A89C1B001AC5E4 /* NYLT Quick Photo Capture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NYLT Quick Photo Capture.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0E1E14D21A89C1B001AC5E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -38,6 +44,8 @@
 		C0E1E15E21A89C1D001AC5E4 /* NYLT Quick Photo CaptureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NYLT Quick Photo CaptureTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0E1E16221A89C1D001AC5E4 /* NYLT_Quick_Photo_CaptureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYLT_Quick_Photo_CaptureTests.swift; sourceTree = "<group>"; };
 		C0E1E16421A89C1D001AC5E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DDA1001AEB1A6488C47E6E22 /* Pods_NYLT_Quick_Photo_CaptureTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NYLT_Quick_Photo_CaptureTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E77E039F0D48676C2A8A52E2 /* Pods-NYLT Quick Photo Capture.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYLT Quick Photo Capture.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NYLT Quick Photo Capture/Pods-NYLT Quick Photo Capture.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				274BE20EF9357CC3FB4EACAE /* Pods_NYLT_Quick_Photo_Capture.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,18 +61,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5963BFA2216391DDB67A57AF /* Pods_NYLT_Quick_Photo_CaptureTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		240CC2309FF1A4CC4CADF8B9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				94DBD5AEBBDF820211FFF0C5 /* Pods_NYLT_Quick_Photo_Capture.framework */,
+				DDA1001AEB1A6488C47E6E22 /* Pods_NYLT_Quick_Photo_CaptureTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C0E1E14121A89C1B001AC5E4 = {
 			isa = PBXGroup;
 			children = (
 				C0E1E14C21A89C1B001AC5E4 /* NYLT Quick Photo Capture */,
 				C0E1E16121A89C1D001AC5E4 /* NYLT Quick Photo CaptureTests */,
 				C0E1E14B21A89C1B001AC5E4 /* Products */,
+				E43ABE739A7874F2F5A97BDC /* Pods */,
+				240CC2309FF1A4CC4CADF8B9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +120,17 @@
 			path = "NYLT Quick Photo CaptureTests";
 			sourceTree = "<group>";
 		};
+		E43ABE739A7874F2F5A97BDC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E77E039F0D48676C2A8A52E2 /* Pods-NYLT Quick Photo Capture.debug.xcconfig */,
+				6B384C750334B6E4124FA017 /* Pods-NYLT Quick Photo Capture.release.xcconfig */,
+				31B7A88246F17A2EE164BE41 /* Pods-NYLT Quick Photo CaptureTests.debug.xcconfig */,
+				99EEAD12F058E3FFF4A4BC19 /* Pods-NYLT Quick Photo CaptureTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -106,9 +138,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C0E1E16721A89C1D001AC5E4 /* Build configuration list for PBXNativeTarget "NYLT Quick Photo Capture" */;
 			buildPhases = (
+				FC9CD57F90CD7AFDFF04BA81 /* [CP] Check Pods Manifest.lock */,
 				C0E1E14621A89C1B001AC5E4 /* Sources */,
 				C0E1E14721A89C1B001AC5E4 /* Frameworks */,
 				C0E1E14821A89C1B001AC5E4 /* Resources */,
+				4B716BA9427170F78B597D14 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -123,6 +157,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C0E1E16A21A89C1D001AC5E4 /* Build configuration list for PBXNativeTarget "NYLT Quick Photo CaptureTests" */;
 			buildPhases = (
+				E18932047743E279F0E40EF8 /* [CP] Check Pods Manifest.lock */,
 				C0E1E15A21A89C1D001AC5E4 /* Sources */,
 				C0E1E15B21A89C1D001AC5E4 /* Frameworks */,
 				C0E1E15C21A89C1D001AC5E4 /* Resources */,
@@ -194,6 +229,75 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4B716BA9427170F78B597D14 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-NYLT Quick Photo Capture/Pods-NYLT Quick Photo Capture-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Zip/Zip.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Zip.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NYLT Quick Photo Capture/Pods-NYLT Quick Photo Capture-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E18932047743E279F0E40EF8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NYLT Quick Photo CaptureTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FC9CD57F90CD7AFDFF04BA81 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NYLT Quick Photo Capture-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C0E1E14621A89C1B001AC5E4 /* Sources */ = {
@@ -362,10 +466,12 @@
 		};
 		C0E1E16821A89C1D001AC5E4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E77E039F0D48676C2A8A52E2 /* Pods-NYLT Quick Photo Capture.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7V888RBLR5;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/Pods/**";
 				INFOPLIST_FILE = "NYLT Quick Photo Capture/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -381,10 +487,12 @@
 		};
 		C0E1E16921A89C1D001AC5E4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B384C750334B6E4124FA017 /* Pods-NYLT Quick Photo Capture.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7V888RBLR5;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/Pods/**";
 				INFOPLIST_FILE = "NYLT Quick Photo Capture/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -400,6 +508,7 @@
 		};
 		C0E1E16B21A89C1D001AC5E4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 31B7A88246F17A2EE164BE41 /* Pods-NYLT Quick Photo CaptureTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -421,6 +530,7 @@
 		};
 		C0E1E16C21A89C1D001AC5E4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 99EEAD12F058E3FFF4A4BC19 /* Pods-NYLT Quick Photo CaptureTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
