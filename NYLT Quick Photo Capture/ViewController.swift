@@ -17,8 +17,10 @@ class ScoutTableViewController: UITableViewController, UINavigationControllerDel
     var filteredScouts = [Scout]()
     func getScouts() {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        self.ShowProgressSpinner(message: "Downloading...")
         CampHubScouts().get(withCompletion: {(scoutResults: [Scout]?) -> Void in
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            self.dismiss(animated: true, completion: nil)
             if (scoutResults == nil) {
                 self.Notify(message: "We weren't able to load scouts - make sure you have an internet connection.", title: "Error")
             } else {
@@ -69,6 +71,57 @@ class ScoutTableViewController: UITableViewController, UINavigationControllerDel
         present(imagePicker, animated: true, completion: nil)
     }
     
+    func clearDocuments() {
+        let fileManager = FileManager.default
+        guard let documents = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            Notify(message: "We encountered an issue deleting all photos.", title: "Error")
+            return
+        }
+        let items = try? fileManager.contentsOfDirectory(at: documents, includingPropertiesForKeys: nil)
+        items?.forEach {item in
+            try? fileManager.removeItem(at: item)
+        }
+        Notify(message: "All photos deleted.", title: "Deletion Complete")
+    }
+    
+    func prepareUploadImage() {
+        var uploadScouts = [Scout]()
+        let documentsURL = try! FileManager().url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+        for scout in scouts {
+            let path = documentsURL.appendingPathComponent(scout.fileName() + ".jpg")
+            if (FileManager().fileExists(atPath: path.path)) {
+                uploadScouts.append(scout)
+            }
+        }
+        self.ShowProgressSpinner(message: "Uploading...")
+        uploadImageRecursive([Bool](), uploadScouts: uploadScouts)
+    }
+    
+    func uploadImageRecursive(_ uploadResults: [Bool], uploadScouts: [Scout]) {
+        var uploadResults = uploadResults
+        var uploadScouts = uploadScouts
+        let scout = uploadScouts.popLast()!
+        let documentsURL = try! FileManager().url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+        let path = documentsURL.appendingPathComponent(scout.fileName() + ".jpg")
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        CampHubScouts().upload(ScoutID: scout.ScoutID, image: UIImage(contentsOfFile: path.path)!, withCompletion: {(results: Any?) -> Void in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            uploadResults.append(results != nil)
+            if (uploadScouts.count > 0) {
+                self.uploadImageRecursive(uploadResults, uploadScouts: uploadScouts)
+            } else {
+                self.uploadImageComplete(uploadResults: uploadResults)
+            }
+        })
+    }
+    
+    func uploadImageComplete(uploadResults: [Bool]) {
+        self.dismiss(animated: true, completion: nil)
+        let failures = uploadResults.filter {$0 == false}.count
+        let message = failures > 0 ? "There were \(failures) failures out of \(uploadResults.count) uploads." : "Total success!"
+        Notify(message: message, title: "Upload Complete")
+    }
+    
     // MARK: document stuff
     func openJson() {
         let documentPicker = UIDocumentPickerViewController(documentTypes: [String(kUTTypeJSON)], in: .import)
@@ -77,11 +130,36 @@ class ScoutTableViewController: UITableViewController, UINavigationControllerDel
         self.present(documentPicker, animated: true)
     }
     
+    func saveZip(_ sender: UIBarButtonItem) {
+        self.ShowProgressSpinner(message: "Creating ZIP file...")
+        var scoutImagePaths = [URL]()
+        let documentsURL = try! FileManager().url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+        for scout in scouts {
+            let path = documentsURL.appendingPathComponent(scout.fileName() + ".jpg")
+            if (FileManager().fileExists(atPath: path.path)) {
+                scoutImagePaths.append(path)
+            }
+        }
+        guard let zipFilePath = try? Zip.quickZipFiles(scoutImagePaths, fileName: "CampHub Images") else {
+            Notify(message: "We encountered an issue created a file for export.", title: "Error")
+            return
+        }
+        let shareSheet = UIActivityViewController(activityItems: [zipFilePath], applicationActivities: nil)
+        shareSheet.popoverPresentationController?.barButtonItem = sender
+        self.dismiss(animated: true, completion: {() -> Void in
+            self.present(shareSheet, animated: true)
+        })
+    }
+    
     // MARK: menus
     @IBAction func showExportMenu(_ sender: UIBarButtonItem) {
         let alert = UIAlertController(title: "Export", message: "Export the photos you've taken online or locally in a file.", preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Save to File", style: .default, handler: nil))
-        alert.addAction(UIAlertAction(title: "Upload to CampHub", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Save to File", style: .default, handler: {(action: UIAlertAction) -> Void in
+            self.saveZip(sender)
+        }))
+        alert.addAction(UIAlertAction(title: "Upload to CampHub", style: .default, handler: {(action: UIAlertAction) -> Void in
+            self.prepareUploadImage()
+        }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.popoverPresentationController?.barButtonItem = sender
         self.present(alert, animated: true)
@@ -95,6 +173,13 @@ class ScoutTableViewController: UITableViewController, UINavigationControllerDel
         alert.addAction(UIAlertAction(title: "Download from CampHub", style: .default, handler:{(action: UIAlertAction) -> Void in
             self.getScouts()
         }))
+        alert.addAction(UIAlertAction(title: "Clear Existing Photos", style: .destructive, handler: {(action: UIAlertAction) -> Void in
+            self.AskYesNo(message: "Are you sure you want to delete all existing photos? This will also clear any other documents stored in this app's folder, and cannot be undone.", title: "Warning", withCompletion: {(result: Bool) -> Void in
+                if (result) {
+                    self.clearDocuments()
+                }
+            })
+        }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.popoverPresentationController?.barButtonItem = sender
         self.present(alert, animated: true)
@@ -105,6 +190,28 @@ class ScoutTableViewController: UITableViewController, UINavigationControllerDel
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
         self.present(alert, animated: true)
+    }
+    
+    func AskYesNo(message: String, title: String, withCompletion completion: @escaping (Bool) -> Void) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {(action: UIAlertAction) -> Void in
+            completion(true)
+        }))
+        alert.addAction(UIAlertAction(title: "No", style: .default, handler: {(action: UIAlertAction) -> Void in
+            completion(false)
+        }))
+        self.present(alert, animated: true)
+    }
+    
+    func ShowProgressSpinner(message: String) {
+        let progressPopup = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        let progressSpinner = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        progressSpinner.hidesWhenStopped = true
+        progressSpinner.style = .gray
+        progressSpinner.startAnimating()
+        
+        progressPopup.view.addSubview(progressSpinner)
+        present(progressPopup, animated: true)
     }
 }
 
@@ -140,7 +247,7 @@ extension ScoutTableViewController: UIImagePickerControllerDelegate {
         imagePicker.dismiss(animated: true, completion: nil)
         let fileManager = FileManager.default
         let documentsPath = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
-        let imagePath = documentsPath?.appendingPathComponent(selectedScout.FirstName + selectedScout.LastName + "-" + String(selectedScout.ScoutID) + ".jpg")
+        let imagePath = documentsPath?.appendingPathComponent(selectedScout.fileName() + ".jpg")
         if let takenImage = info[.editedImage] as? UIImage {
             try? takenImage.jpegData(compressionQuality: 0.5)?.write(to: imagePath!)
         } else {
@@ -190,5 +297,11 @@ struct Scout: Codable {
     var LastName: String
     var Team: String?
     var CourseID: Int?
+}
+
+extension Scout {
+    func fileName() -> String {
+       return self.FirstName + self.LastName + "-" + String(self.ScoutID)
+    }
 }
 

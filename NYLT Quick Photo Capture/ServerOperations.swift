@@ -7,13 +7,15 @@
 //
 
 import Foundation
+import UIKit
 
 class CampHubScouts {
-    let url = URL(string: "https://nyltcamphub.azurewebsites.net/scouts")
+    let scoutURL = URL(string: "https://nyltcamphub.azurewebsites.net/scouts")
+    let baseURL = "https://nyltcamphub.azurewebsites.net/scouts/"
     
     func get(withCompletion completion: @escaping ([Scout]?) -> Void) {
         let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: .main)
-        let task = session.dataTask(with: self.url!, completionHandler: {(data: Data?, response: URLResponse?, error: Error?) -> Void in
+        let task = session.dataTask(with: self.scoutURL!, completionHandler: {(data: Data?, response: URLResponse?, error: Error?) -> Void in
             guard let data = data else {
                 completion(nil)
                 return
@@ -29,5 +31,47 @@ class CampHubScouts {
         task.resume()
     }
     
-    func upload() {}
+    func upload(ScoutID: Int, image: UIImage, withCompletion completion: @escaping (Any?) -> Void) {
+        let imageURL = URL(string: baseURL + String(ScoutID) + "/image")!
+        var request = URLRequest(url: imageURL)
+        let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: .main)
+        request.httpMethod = "POST"
+        let boundary = "Boundary-\(UUID().uuidString)"
+        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        request.httpBody = createBody(boundary: boundary, data: image.jpegData(compressionQuality: 0.5)!, mimeType: "image/jpg", name: "scoutImage", filename: String(ScoutID))
+        let task = session.dataTask(with: request, completionHandler: {(data: Data?, response: URLResponse?, error: Error?) -> Void in
+            let httpres = response as! HTTPURLResponse
+            print(httpres.statusCode)
+            if (error != nil || httpres.statusCode != 200) {
+                completion(nil)
+                return
+            }
+            guard let data = data else {
+                completion(nil)
+                return
+            }
+            completion(data)
+            return
+        })
+        task.resume()
+    }
+    
+    func createBody(boundary: String, data: Data, mimeType: String,name: String, filename: String) -> Data {
+        let body = NSMutableData()
+        let boundaryPrefix = "--\(boundary)\r\n"
+        body.appendString(boundaryPrefix)
+        body.appendString("Content-Disposition: form-data; name=\"\(name)\"; filename=\"\(filename)\"\r\n")
+        body.appendString("Content-Type: \(mimeType)\r\n\r\n")
+        body.append(data)
+        body.appendString("\r\n")
+        body.appendString("--".appending(boundary.appending("--")))
+        return body as Data
+    }
+}
+
+extension NSMutableData {
+    func appendString(_ string: String) {
+        let data = string.data(using: String.Encoding.utf8, allowLossyConversion: false)
+        append(data!)
+    }
 }

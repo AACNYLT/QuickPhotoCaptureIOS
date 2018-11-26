@@ -1,0 +1,6 @@
+framework module Pods_NYLT_Quick_Photo_CaptureTests {
+  umbrella header "Pods-NYLT Quick Photo CaptureTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
