@@ -93,8 +93,13 @@ class ScoutTableViewController: UITableViewController, UINavigationControllerDel
                 uploadScouts.append(scout)
             }
         }
+        if (uploadScouts.count > 0) {
         self.ShowProgressSpinner(message: "Uploading...")
         uploadImageRecursive([Bool](), uploadScouts: uploadScouts)
+        } else {
+                        self.Notify(message: "No scouts to upload.", title: "Upload Aborted")
+            
+        }
     }
     
     func uploadImageRecursive(_ uploadResults: [Bool], uploadScouts: [Scout]) {
@@ -116,10 +121,11 @@ class ScoutTableViewController: UITableViewController, UINavigationControllerDel
     }
     
     func uploadImageComplete(uploadResults: [Bool]) {
-        self.dismiss(animated: true, completion: nil)
-        let failures = uploadResults.filter {$0 == false}.count
-        let message = failures > 0 ? "There were \(failures) failures out of \(uploadResults.count) uploads." : "Total success!"
-        Notify(message: message, title: "Upload Complete")
+        self.dismiss(animated: true, completion: {() -> Void in
+            let failures = uploadResults.filter {$0 == false}.count
+            let message = failures > 0 ? "There were \(failures) failures out of \(uploadResults.count) uploads." : "Total success!"
+            self.Notify(message: message, title: "Upload Complete")
+        })
     }
     
     // MARK: document stuff

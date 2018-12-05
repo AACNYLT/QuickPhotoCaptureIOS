@@ -40,7 +40,10 @@ class CampHubScouts {
         request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
         request.httpBody = createBody(boundary: boundary, data: image.jpegData(compressionQuality: 0.5)!, mimeType: "image/jpg", name: "scoutImage", filename: String(ScoutID))
         let task = session.dataTask(with: request, completionHandler: {(data: Data?, response: URLResponse?, error: Error?) -> Void in
-            let httpres = response as! HTTPURLResponse
+            guard let httpres = response as? HTTPURLResponse else {
+                completion(nil)
+                return
+            }
             print(httpres.statusCode)
             if (error != nil || httpres.statusCode != 200) {
                 completion(nil)
