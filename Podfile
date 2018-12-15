@@ -8,6 +8,7 @@ target 'NYLT Quick Photo Capture' do
   # Pods for NYLT Quick Photo Capture
   source 'https://github.com/CocoaPods/Specs.git'
   pod 'Zip', '~> 1.1'
+  pod 'AppCenter'
 
   target 'NYLT Quick Photo CaptureTests' do
     inherit! :search_paths

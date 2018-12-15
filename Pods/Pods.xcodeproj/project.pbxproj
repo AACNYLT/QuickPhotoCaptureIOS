@@ -7,26 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		071B282A6A90AEF2B82BC213EEEDFB1D /* Zip-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 281B80DB04F8E3C20B56299A7FC32180 /* Zip-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		12ED9271855F08D6BEBB4BB9FA1BEC11 /* Zip.h in Headers */ = {isa = PBXBuildFile; fileRef = 99B22C5171A45F58DFF85E51A343620C /* Zip.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1CA9793F1F9C230444CE70EABA7AACDD /* ioapi.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EAC7C5A50CAB6A8CE4AA14D66908D05 /* ioapi.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		431A30BC889F4BBB99F13FE9A7308007 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 3C8156F61FEA5C6DABB1A1EC34388363 /* ioapi.c */; };
-		546F28CA19AA1445E53C83C4A3C5CCC9 /* Zip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0E85F4DEB9F4C652B7E69791951F81 /* Zip.swift */; };
+		071B282A6A90AEF2B82BC213EEEDFB1D /* Zip-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F9588C873991A39B6157642AC8BA3AD /* Zip-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		12ED9271855F08D6BEBB4BB9FA1BEC11 /* Zip.h in Headers */ = {isa = PBXBuildFile; fileRef = D22135EDFDC02F471A47EA28B96806B6 /* Zip.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1CA9793F1F9C230444CE70EABA7AACDD /* ioapi.h in Headers */ = {isa = PBXBuildFile; fileRef = 72BB327AC7591C4BA51239D4B243EE24 /* ioapi.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		431A30BC889F4BBB99F13FE9A7308007 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 0CC240458CEFF8FF6DF6DFB8379BFFF1 /* ioapi.c */; };
+		546F28CA19AA1445E53C83C4A3C5CCC9 /* Zip.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB0DAEFA50353E77770344827CAFEE0 /* Zip.swift */; };
 		5569ED323CBF0878DBCB601C3826E0EC /* Pods-NYLT Quick Photo Capture-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 98E58250E22F1569DF21EEDBCEC4EDD8 /* Pods-NYLT Quick Photo Capture-dummy.m */; };
-		64ED6BDF1205B501ABBCBD00F91F6421 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 61D62AA3B7A92122BD10FC08B6FADDA9 /* zip.c */; };
-		7607FB49844C4A68418A46FC1665CC8B /* ZipUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3D3E640D9C6A79C01913CE8076B8E4 /* ZipUtilities.swift */; };
-		8B174809C0ED9ED19523EC158EC08C06 /* crypt.h in Headers */ = {isa = PBXBuildFile; fileRef = 75B5DDD68C50DA423D1B40FAE5390AEF /* crypt.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		8C3EBEACC48967A9DA41A09EC04B0BA1 /* QuickZip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3A375FC62CD45C78E9120AFCE3EE5E /* QuickZip.swift */; };
-		91839485C27E8FAFC278F8C12E9E4588 /* zip.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B13DB072439FDF5128F8D544DE850AD /* zip.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		64ED6BDF1205B501ABBCBD00F91F6421 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 25E3B62C0E66E7EAB24E60856F8AFFA9 /* zip.c */; };
+		7607FB49844C4A68418A46FC1665CC8B /* ZipUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564BE35CC525C4FC3861BD86A808DF94 /* ZipUtilities.swift */; };
+		8B174809C0ED9ED19523EC158EC08C06 /* crypt.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CEEB0EF5DE3861BB0E2E63A5BA4B6A6 /* crypt.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		8C3EBEACC48967A9DA41A09EC04B0BA1 /* QuickZip.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62C4C69FA9E76F081E96571C3C1E1E1 /* QuickZip.swift */; };
+		91839485C27E8FAFC278F8C12E9E4588 /* zip.h in Headers */ = {isa = PBXBuildFile; fileRef = 9577048CEC6E04037457F21E879EA765 /* zip.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		A66F2162B04EC7ED71F9DD62F551672C /* Pods-NYLT Quick Photo CaptureTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FCBA8FA88011E779DE4B4204A04B87C4 /* Pods-NYLT Quick Photo CaptureTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B76327ABF99F4A9957DAC72945008672 /* Pods-NYLT Quick Photo CaptureTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CD7976125DD26AFF36825C07F45CEAD /* Pods-NYLT Quick Photo CaptureTests-dummy.m */; };
 		C22CC7EDE24A417039E69F86B3B46212 /* Pods-NYLT Quick Photo Capture-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D6F5B533C4126FAF6DE8C2D29978C446 /* Pods-NYLT Quick Photo Capture-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C2B5E6794D7F830A7E7943B9839C591C /* Zip-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBA5909677A6245EB5781459CAD561E /* Zip-dummy.m */; };
+		C2B5E6794D7F830A7E7943B9839C591C /* Zip-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5606CEA3D5ECB542AA15326CD73BB0B2 /* Zip-dummy.m */; };
 		C2D9973D2CEA3BE2F782B1392C3D7048 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */; };
 		DAAD37493D61E5DE6D002965A33ADF80 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */; };
-		EEC4820581EF9B69B0FD9A122BA01C21 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 91C8FA87F1D212BD069F6EB81200E3E2 /* unzip.c */; };
+		EEC4820581EF9B69B0FD9A122BA01C21 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B10DDE9EE388C125A42DB5FD385C92F /* unzip.c */; };
 		F062EBACDBAAD82AED5A59A2A3E3F2D7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */; };
-		F894DFE1F634E2EFE5EA72B9D9C3C5E7 /* unzip.h in Headers */ = {isa = PBXBuildFile; fileRef = F93371BCFC6F7AC0C89752E99B0C343C /* unzip.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		F894DFE1F634E2EFE5EA72B9D9C3C5E7 /* unzip.h in Headers */ = {isa = PBXBuildFile; fileRef = CBC6F971C67BD7E03F73C44896E7399C /* unzip.h */; settings = {ATTRIBUTES = (Project, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,46 +48,49 @@
 
 /* Begin PBXFileReference section */
 		0AD634FF95244B3EA95A342AA5460D74 /* Pods_NYLT_Quick_Photo_Capture.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_NYLT_Quick_Photo_Capture.framework; path = "Pods-NYLT Quick Photo Capture.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0E3D3E640D9C6A79C01913CE8076B8E4 /* ZipUtilities.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZipUtilities.swift; path = Zip/ZipUtilities.swift; sourceTree = "<group>"; };
+		0CC240458CEFF8FF6DF6DFB8379BFFF1 /* ioapi.c */ = {isa = PBXFileReference; includeInIndex = 1; name = ioapi.c; path = Zip/minizip/ioapi.c; sourceTree = "<group>"; };
 		1A58FEA33C591E019BBF7279CA6CFB7B /* Pods-NYLT Quick Photo CaptureTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-NYLT Quick Photo CaptureTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		2284B0E45C2319BEB220D6E268668A5A /* Pods-NYLT Quick Photo CaptureTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NYLT Quick Photo CaptureTests.debug.xcconfig"; sourceTree = "<group>"; };
+		25E3B62C0E66E7EAB24E60856F8AFFA9 /* zip.c */ = {isa = PBXFileReference; includeInIndex = 1; name = zip.c; path = Zip/minizip/zip.c; sourceTree = "<group>"; };
 		2739D60C983D2728DE7063D305368D04 /* Pods-NYLT Quick Photo Capture-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NYLT Quick Photo Capture-resources.sh"; sourceTree = "<group>"; };
-		281B80DB04F8E3C20B56299A7FC32180 /* Zip-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Zip-umbrella.h"; sourceTree = "<group>"; };
-		2C3A375FC62CD45C78E9120AFCE3EE5E /* QuickZip.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuickZip.swift; path = Zip/QuickZip.swift; sourceTree = "<group>"; };
 		2CD7976125DD26AFF36825C07F45CEAD /* Pods-NYLT Quick Photo CaptureTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-NYLT Quick Photo CaptureTests-dummy.m"; sourceTree = "<group>"; };
-		3C8156F61FEA5C6DABB1A1EC34388363 /* ioapi.c */ = {isa = PBXFileReference; includeInIndex = 1; name = ioapi.c; path = Zip/minizip/ioapi.c; sourceTree = "<group>"; };
+		2CEEB0EF5DE3861BB0E2E63A5BA4B6A6 /* crypt.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = crypt.h; path = Zip/minizip/crypt.h; sourceTree = "<group>"; };
 		41DC7F67F91682FB03D80256EC58D400 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		45074206F97F7EC6EC600E079856605E /* Zip.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Zip.modulemap; sourceTree = "<group>"; };
 		4884917EBF10431F39EEE2A7812FB201 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4CBA5909677A6245EB5781459CAD561E /* Zip-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Zip-dummy.m"; sourceTree = "<group>"; };
 		55C0F383115751240728323E2A405FA6 /* Pods-NYLT Quick Photo CaptureTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-NYLT Quick Photo CaptureTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		5606CEA3D5ECB542AA15326CD73BB0B2 /* Zip-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Zip-dummy.m"; sourceTree = "<group>"; };
+		564BE35CC525C4FC3861BD86A808DF94 /* ZipUtilities.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZipUtilities.swift; path = Zip/ZipUtilities.swift; sourceTree = "<group>"; };
 		597F6E811A1A90EC0EF53FE8A16EEFAF /* Pods-NYLT Quick Photo CaptureTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NYLT Quick Photo CaptureTests-resources.sh"; sourceTree = "<group>"; };
 		5B01A51454DFC1D39958D4E0149D4C15 /* Pods-NYLT Quick Photo CaptureTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NYLT Quick Photo CaptureTests-frameworks.sh"; sourceTree = "<group>"; };
 		5EC6D29A4A39EE25BB3174E747633B16 /* Pods-NYLT Quick Photo CaptureTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NYLT Quick Photo CaptureTests.release.xcconfig"; sourceTree = "<group>"; };
-		61D62AA3B7A92122BD10FC08B6FADDA9 /* zip.c */ = {isa = PBXFileReference; includeInIndex = 1; name = zip.c; path = Zip/minizip/zip.c; sourceTree = "<group>"; };
 		6560E221040704F9A36B84C77468CB86 /* Pods-NYLT Quick Photo Capture-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-NYLT Quick Photo Capture-acknowledgements.markdown"; sourceTree = "<group>"; };
-		6C0E85F4DEB9F4C652B7E69791951F81 /* Zip.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Zip.swift; path = Zip/Zip.swift; sourceTree = "<group>"; };
-		75B5DDD68C50DA423D1B40FAE5390AEF /* crypt.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = crypt.h; path = Zip/minizip/crypt.h; sourceTree = "<group>"; };
-		7B13DB072439FDF5128F8D544DE850AD /* zip.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = zip.h; path = Zip/minizip/zip.h; sourceTree = "<group>"; };
-		7EAC7C5A50CAB6A8CE4AA14D66908D05 /* ioapi.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ioapi.h; path = Zip/minizip/ioapi.h; sourceTree = "<group>"; };
+		72BB327AC7591C4BA51239D4B243EE24 /* ioapi.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ioapi.h; path = Zip/minizip/ioapi.h; sourceTree = "<group>"; };
+		803ABFA228781FA4A42919C273A6E7DD /* AppCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppCenter.framework; path = "AppCenter-SDK-Apple/iOS/AppCenter.framework"; sourceTree = "<group>"; };
 		810038D202060D78EDA916C2A0704EEB /* Pods-NYLT Quick Photo Capture-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NYLT Quick Photo Capture-frameworks.sh"; sourceTree = "<group>"; };
-		91C8FA87F1D212BD069F6EB81200E3E2 /* unzip.c */ = {isa = PBXFileReference; includeInIndex = 1; name = unzip.c; path = Zip/minizip/unzip.c; sourceTree = "<group>"; };
+		84B9F78AAF71112EA2395B81C453E067 /* Zip-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Zip-prefix.pch"; sourceTree = "<group>"; };
+		8B10DDE9EE388C125A42DB5FD385C92F /* unzip.c */ = {isa = PBXFileReference; includeInIndex = 1; name = unzip.c; path = Zip/minizip/unzip.c; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9577048CEC6E04037457F21E879EA765 /* zip.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = zip.h; path = Zip/minizip/zip.h; sourceTree = "<group>"; };
 		98E58250E22F1569DF21EEDBCEC4EDD8 /* Pods-NYLT Quick Photo Capture-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-NYLT Quick Photo Capture-dummy.m"; sourceTree = "<group>"; };
 		99652FD79FAC251CF743A1CAF0521BE9 /* Pods-NYLT Quick Photo Capture-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-NYLT Quick Photo Capture-acknowledgements.plist"; sourceTree = "<group>"; };
-		99B22C5171A45F58DFF85E51A343620C /* Zip.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Zip.h; path = Zip/Zip.h; sourceTree = "<group>"; };
-		9ECA36904BF20E6DBA229818F1A3F67E /* Zip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Zip.xcconfig; sourceTree = "<group>"; };
+		9F9588C873991A39B6157642AC8BA3AD /* Zip-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Zip-umbrella.h"; sourceTree = "<group>"; };
+		A49CA4185CC87B8BBA6DDF6E6E5A2BA7 /* AppCenterAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppCenterAnalytics.framework; path = "AppCenter-SDK-Apple/iOS/AppCenterAnalytics.framework"; sourceTree = "<group>"; };
+		A6C51BBB6387F6CD5BC377FAE43D735A /* Zip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Zip.xcconfig; sourceTree = "<group>"; };
 		AB44E0467E607481CAC30E297ADC1283 /* Pods-NYLT Quick Photo Capture.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-NYLT Quick Photo Capture.modulemap"; sourceTree = "<group>"; };
-		ADAB72AEF3262808C6BC0DAD72997DF9 /* Zip.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Zip.modulemap; sourceTree = "<group>"; };
 		AE1D38167D1D35F5830B91C6ACE660A5 /* Pods-NYLT Quick Photo Capture.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NYLT Quick Photo Capture.debug.xcconfig"; sourceTree = "<group>"; };
 		BBAB8325CB95994AD80123DA2EBF068D /* Pods_NYLT_Quick_Photo_CaptureTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_NYLT_Quick_Photo_CaptureTests.framework; path = "Pods-NYLT Quick Photo CaptureTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CC9CE18C797D69AF31048B6E586E291D /* Zip-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Zip-prefix.pch"; sourceTree = "<group>"; };
+		C9FD6C16E3BE632A933704ECC87EF203 /* AppCenterCrashes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppCenterCrashes.framework; path = "AppCenter-SDK-Apple/iOS/AppCenterCrashes.framework"; sourceTree = "<group>"; };
+		CBC6F971C67BD7E03F73C44896E7399C /* unzip.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = unzip.h; path = Zip/minizip/unzip.h; sourceTree = "<group>"; };
+		D22135EDFDC02F471A47EA28B96806B6 /* Zip.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Zip.h; path = Zip/Zip.h; sourceTree = "<group>"; };
 		D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		D6F5B533C4126FAF6DE8C2D29978C446 /* Pods-NYLT Quick Photo Capture-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-NYLT Quick Photo Capture-umbrella.h"; sourceTree = "<group>"; };
 		D7403615766DBD94A5F4E94F530E0556 /* Pods-NYLT Quick Photo CaptureTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-NYLT Quick Photo CaptureTests.modulemap"; sourceTree = "<group>"; };
-		D83B7FE34FFE63A09B1BDA28D0EAFE53 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D88EEBB339258ACE1D277F39FA41E5D8 /* Zip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Zip.framework; path = Zip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E62C4C69FA9E76F081E96571C3C1E1E1 /* QuickZip.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuickZip.swift; path = Zip/QuickZip.swift; sourceTree = "<group>"; };
+		E92007F9A748FCA8E45F6804AAAFB69B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4269992497A3A542C7438427120E889 /* Pods-NYLT Quick Photo Capture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NYLT Quick Photo Capture.release.xcconfig"; sourceTree = "<group>"; };
-		F93371BCFC6F7AC0C89752E99B0C343C /* unzip.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = unzip.h; path = Zip/minizip/unzip.h; sourceTree = "<group>"; };
+		FAB0DAEFA50353E77770344827CAFEE0 /* Zip.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Zip.swift; path = Zip/Zip.swift; sourceTree = "<group>"; };
 		FCBA8FA88011E779DE4B4204A04B87C4 /* Pods-NYLT Quick Photo CaptureTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-NYLT Quick Photo CaptureTests-umbrella.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,6 +122,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F66CE1BE9171FAD0C59829AA2CA6180 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				A47214B4997E9B8CA1345F91EE38F8A8 /* Frameworks */,
+			);
+			name = Analytics;
+			sourceTree = "<group>";
+		};
+		19E882A18DB6C3C68DC4A218407557A5 /* AppCenter */ = {
+			isa = PBXGroup;
+			children = (
+				0F66CE1BE9171FAD0C59829AA2CA6180 /* Analytics */,
+				B6E9209AE4135F4CD5CB9AD3D1DCFF78 /* Core */,
+				EBC26926668BACA4BA06DB77CC18CFC9 /* Crashes */,
+			);
+			name = AppCenter;
+			path = AppCenter;
+			sourceTree = "<group>";
+		};
+		40CA3AE90282139FD3028230419EC3FB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				19E882A18DB6C3C68DC4A218407557A5 /* AppCenter */,
+				73E329008505E8B7253B9D4873275007 /* Zip */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		44D5347904CF754D6785B84253F2574A /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -137,12 +168,46 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		73E329008505E8B7253B9D4873275007 /* Zip */ = {
+			isa = PBXGroup;
+			children = (
+				2CEEB0EF5DE3861BB0E2E63A5BA4B6A6 /* crypt.h */,
+				0CC240458CEFF8FF6DF6DFB8379BFFF1 /* ioapi.c */,
+				72BB327AC7591C4BA51239D4B243EE24 /* ioapi.h */,
+				E62C4C69FA9E76F081E96571C3C1E1E1 /* QuickZip.swift */,
+				8B10DDE9EE388C125A42DB5FD385C92F /* unzip.c */,
+				CBC6F971C67BD7E03F73C44896E7399C /* unzip.h */,
+				25E3B62C0E66E7EAB24E60856F8AFFA9 /* zip.c */,
+				9577048CEC6E04037457F21E879EA765 /* zip.h */,
+				D22135EDFDC02F471A47EA28B96806B6 /* Zip.h */,
+				FAB0DAEFA50353E77770344827CAFEE0 /* Zip.swift */,
+				564BE35CC525C4FC3861BD86A808DF94 /* ZipUtilities.swift */,
+				7BE17CD14501D58E01A5F78B8FC2884F /* Support Files */,
+			);
+			name = Zip;
+			path = Zip;
+			sourceTree = "<group>";
+		};
+		7BE17CD14501D58E01A5F78B8FC2884F /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				E92007F9A748FCA8E45F6804AAAFB69B /* Info.plist */,
+				45074206F97F7EC6EC600E079856605E /* Zip.modulemap */,
+				A6C51BBB6387F6CD5BC377FAE43D735A /* Zip.xcconfig */,
+				5606CEA3D5ECB542AA15326CD73BB0B2 /* Zip-dummy.m */,
+				84B9F78AAF71112EA2395B81C453E067 /* Zip-prefix.pch */,
+				9F9588C873991A39B6157642AC8BA3AD /* Zip-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Zip";
+			sourceTree = "<group>";
+		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				E104CD8A37556B4A21987E8A7CA5A000 /* Pods */,
+				40CA3AE90282139FD3028230419EC3FB /* Pods */,
 				53525841FF42C193D02C2250F1BDD5AE /* Products */,
 				8B157C4BFBE4457D7D221D34E2BBA78E /* Targets Support Files */,
 			);
@@ -157,18 +222,28 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		B3E6F71E572ED4594EBD07CBA5A1DD1E /* Support Files */ = {
+		A47214B4997E9B8CA1345F91EE38F8A8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D83B7FE34FFE63A09B1BDA28D0EAFE53 /* Info.plist */,
-				ADAB72AEF3262808C6BC0DAD72997DF9 /* Zip.modulemap */,
-				9ECA36904BF20E6DBA229818F1A3F67E /* Zip.xcconfig */,
-				4CBA5909677A6245EB5781459CAD561E /* Zip-dummy.m */,
-				CC9CE18C797D69AF31048B6E586E291D /* Zip-prefix.pch */,
-				281B80DB04F8E3C20B56299A7FC32180 /* Zip-umbrella.h */,
+				A49CA4185CC87B8BBA6DDF6E6E5A2BA7 /* AppCenterAnalytics.framework */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/Zip";
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B6E9209AE4135F4CD5CB9AD3D1DCFF78 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				BBE3D5D4F66328F9DDCDB12CD5C7B26F /* Frameworks */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		BBE3D5D4F66328F9DDCDB12CD5C7B26F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				803ABFA228781FA4A42919C273A6E7DD /* AppCenter.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -197,32 +272,12 @@
 			path = "Target Support Files/Pods-NYLT Quick Photo CaptureTests";
 			sourceTree = "<group>";
 		};
-		E104CD8A37556B4A21987E8A7CA5A000 /* Pods */ = {
+		CF885F754AC85932C9FC4979482AFC1C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E6B4247B49DF5C283445C0E26BFD1D86 /* Zip */,
+				C9FD6C16E3BE632A933704ECC87EF203 /* AppCenterCrashes.framework */,
 			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		E6B4247B49DF5C283445C0E26BFD1D86 /* Zip */ = {
-			isa = PBXGroup;
-			children = (
-				75B5DDD68C50DA423D1B40FAE5390AEF /* crypt.h */,
-				3C8156F61FEA5C6DABB1A1EC34388363 /* ioapi.c */,
-				7EAC7C5A50CAB6A8CE4AA14D66908D05 /* ioapi.h */,
-				2C3A375FC62CD45C78E9120AFCE3EE5E /* QuickZip.swift */,
-				91C8FA87F1D212BD069F6EB81200E3E2 /* unzip.c */,
-				F93371BCFC6F7AC0C89752E99B0C343C /* unzip.h */,
-				61D62AA3B7A92122BD10FC08B6FADDA9 /* zip.c */,
-				7B13DB072439FDF5128F8D544DE850AD /* zip.h */,
-				99B22C5171A45F58DFF85E51A343620C /* Zip.h */,
-				6C0E85F4DEB9F4C652B7E69791951F81 /* Zip.swift */,
-				0E3D3E640D9C6A79C01913CE8076B8E4 /* ZipUtilities.swift */,
-				B3E6F71E572ED4594EBD07CBA5A1DD1E /* Support Files */,
-			);
-			name = Zip;
-			path = Zip;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		EBA95B2CE95BDDF404D385885E7E80C4 /* Pods-NYLT Quick Photo Capture */ = {
@@ -241,6 +296,14 @@
 			);
 			name = "Pods-NYLT Quick Photo Capture";
 			path = "Target Support Files/Pods-NYLT Quick Photo Capture";
+			sourceTree = "<group>";
+		};
+		EBC26926668BACA4BA06DB77CC18CFC9 /* Crashes */ = {
+			isa = PBXGroup;
+			children = (
+				CF885F754AC85932C9FC4979482AFC1C /* Frameworks */,
+			);
+			name = Crashes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -513,7 +576,7 @@
 		};
 		33C2F260601BE0D1CD0A33BC6CA471C6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9ECA36904BF20E6DBA229818F1A3F67E /* Zip.xcconfig */;
+			baseConfigurationReference = A6C51BBB6387F6CD5BC377FAE43D735A /* Zip.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -549,7 +612,7 @@
 		};
 		8752E2E4B8316560499DF43C83CC6BF2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9ECA36904BF20E6DBA229818F1A3F67E /* Zip.xcconfig */;
+			baseConfigurationReference = A6C51BBB6387F6CD5BC377FAE43D735A /* Zip.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";

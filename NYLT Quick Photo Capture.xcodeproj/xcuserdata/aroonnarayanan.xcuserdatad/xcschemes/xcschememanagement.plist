@@ -6,8 +6,23 @@
 	<dict>
 		<key>NYLT Quick Photo Capture.xcscheme_^#shared#^_</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>3</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>C0E1E14921A89C1B001AC5E4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C0E1E15D21A89C1D001AC5E4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
