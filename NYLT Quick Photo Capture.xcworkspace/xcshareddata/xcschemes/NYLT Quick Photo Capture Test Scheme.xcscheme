@@ -28,16 +28,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C0E1E15D21A89C1D001AC5E4"
-               BuildableName = "NYLT Quick Photo CaptureTests.xctest"
-               BlueprintName = "NYLT Quick Photo CaptureTests"
-               ReferencedContainer = "container:NYLT Quick Photo Capture.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
