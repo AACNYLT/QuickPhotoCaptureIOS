@@ -42,6 +42,7 @@ class ScoutTableViewController: UITableViewController, UINavigationControllerDel
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Filter Scouts"
         navigationItem.searchController = searchController
+        navigationController?.navigationBar.prefersLargeTitles = true
         definesPresentationContext = true
     }
     
@@ -62,11 +63,11 @@ class ScoutTableViewController: UITableViewController, UINavigationControllerDel
     }
     
     // MARK: Image stuff
-    func takePhoto(scout: Scout) {
+    func takePhoto(scout: Scout, source: UIImagePickerController.SourceType) {
         selectedScout = scout;
         imagePicker =  UIImagePickerController()
         imagePicker.delegate = self
-        imagePicker.sourceType = .camera
+        imagePicker.sourceType = source
         imagePicker.allowsEditing = true
         present(imagePicker, animated: true, completion: nil)
     }
@@ -256,6 +257,7 @@ extension ScoutTableViewController: UIImagePickerControllerDelegate {
         let imagePath = documentsPath?.appendingPathComponent(selectedScout.fileName() + ".jpg")
         if let takenImage = info[.editedImage] as? UIImage {
             try? takenImage.jpegData(compressionQuality: 0.5)?.write(to: imagePath!)
+            self.tableView.reloadData()
         } else {
             return
         }
@@ -279,13 +281,32 @@ extension ScoutTableViewController {
         let scoutUnit = scout.CourseID != nil ? scout.CourseID! % 2 == 0 ? "Blue" : "Red" : nil
         cell.textLabel?.text = scout.FirstName + " " + scout.LastName
         cell.detailTextLabel?.text = scout.Team != nil && scoutUnit != nil ? scoutUnit! + " - " + scout.Team! : nil
+        // instantiating file manager to pull image from documents library
+        let fileManager = FileManager.default
+        let documentsPath = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
+        let imagePath = documentsPath!.appendingPathComponent(scout.fileName() + ".jpg")
+        if let imageData = try? Data(contentsOf: imagePath) {
+            let scoutImage = UIImage(data: imageData)
+            cell.imageView?.image = scoutImage
+            cell.imageView?.contentMode = .scaleAspectFill
+        } else {
+            cell.imageView?.image = nil
+        }
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let libraryAction = UITableViewRowAction(style: .normal, title: "Existing Photo", handler: { (action, selectedIndexPath) in
+            let scout = self.isFiltering() ? self.filteredScouts[selectedIndexPath.row] : self.scouts[selectedIndexPath.row]
+            self.takePhoto(scout: scout, source: .photoLibrary)
+            })
+        return [libraryAction]
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let scout = isFiltering() ? filteredScouts[indexPath.row] : scouts[indexPath.row];
-        takePhoto(scout: scout)
+        takePhoto(scout: scout, source: .camera)
     }
 }
 
