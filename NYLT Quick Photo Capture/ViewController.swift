@@ -5,7 +5,7 @@
 //  Created by Aroon Narayanan on 11/23/18.
 //  Copyright © 2018 Atlanta Area Council NYLT. All rights reserved.
 //
- 
+
 import UIKit
 import MobileCoreServices
 import Zip
@@ -62,6 +62,55 @@ class ScoutTableViewController: UITableViewController, UINavigationControllerDel
         tableView.reloadData()
     }
     
+    // MARK: Sorting stuff
+    func sortScouts(sortMethod: SortField) {
+        switch sortMethod {
+        case .Course:
+            sortBothArrays { (a, b) -> Bool in
+                return a.CourseID ?? 0 < b.CourseID ?? 0
+            }
+        case .FirstName:
+            sortBothArrays { (a, b) -> Bool in
+                return a.FirstName.lowercased() < b.FirstName.lowercased()
+            }
+        case .LastName:
+            sortBothArrays { (a, b) -> Bool in
+                return a.LastName.lowercased() < b.LastName.lowercased()
+            }
+        case .Team:
+            sortBothArrays { (a, b) -> Bool in
+                return a.Team?.lowercased() ?? "" < b.Team?.lowercased() ?? ""
+            }
+        default:
+            break
+        }
+        tableView.reloadData()
+    }
+    
+    func sortBothArrays(sortFunc: (Scout, Scout) -> Bool) {
+        scouts.sort(by: sortFunc)
+        filteredScouts.sort(by: sortFunc)
+    }
+    
+    @IBAction func chooseSortMethod(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "First Name", style: .default, handler: {(action: UIAlertAction) -> Void in
+            self.sortScouts(sortMethod: .FirstName)
+        }))
+        alert.addAction(UIAlertAction(title: "Last Name", style: .default, handler:{(action: UIAlertAction) -> Void in
+            self.sortScouts(sortMethod: .LastName)
+        }))
+        alert.addAction(UIAlertAction(title: "Team", style: .default, handler:{(action: UIAlertAction) -> Void in
+            self.sortScouts(sortMethod: .Team)
+        }))
+        alert.addAction(UIAlertAction(title: "Course", style: .default, handler:{(action: UIAlertAction) -> Void in
+            self.sortScouts(sortMethod: .Course)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.popoverPresentationController?.barButtonItem = sender
+        self.present(alert, animated: true)
+    }
+    
     // MARK: Image stuff
     func takePhoto(scout: Scout, source: UIImagePickerController.SourceType) {
         selectedScout = scout;
@@ -95,10 +144,10 @@ class ScoutTableViewController: UITableViewController, UINavigationControllerDel
             }
         }
         if (uploadScouts.count > 0) {
-        self.ShowProgressSpinner(message: "Uploading...")
-        uploadImageRecursive([Bool](), uploadScouts: uploadScouts)
+            self.ShowProgressSpinner(message: "Uploading...")
+            uploadImageRecursive([Bool](), uploadScouts: uploadScouts)
         } else {
-                        self.Notify(message: "No scouts to upload.", title: "Upload Aborted")
+            self.Notify(message: "No scouts to upload.", title: "Upload Aborted")
             
         }
     }
@@ -299,7 +348,7 @@ extension ScoutTableViewController {
         let libraryAction = UITableViewRowAction(style: .normal, title: "Existing Photo", handler: { (action, selectedIndexPath) in
             let scout = self.isFiltering() ? self.filteredScouts[selectedIndexPath.row] : self.scouts[selectedIndexPath.row]
             self.takePhoto(scout: scout, source: .photoLibrary)
-            })
+        })
         return [libraryAction]
     }
     
@@ -328,7 +377,10 @@ struct Scout: Codable {
 
 extension Scout {
     func fileName() -> String {
-       return self.FirstName + self.LastName + "-" + String(self.ScoutID)
+        return self.FirstName + self.LastName + "-" + String(self.ScoutID)
     }
 }
 
+enum SortField {
+    case FirstName, LastName, Team, Course, Default
+}
