@@ -21,9 +21,16 @@ class CampHubScouts {
                 return
             }
             let decoder = JSONDecoder()
-            guard let scouts = try? decoder.decode([Scout].self, from: data) else {
+            guard var scouts = try? decoder.decode([Scout].self, from: data) else {
                 completion(nil)
                 return
+            }
+            if let minCourseIDString = UserDefaults.standard.string(forKey: "mincourseid") {
+                if let minCourseID = Int(minCourseIDString) {
+                    scouts = scouts.filter({ (scout) -> Bool in
+                        return scout.CourseID ?? 0 >= minCourseID
+                    })
+                }
             }
             completion(scouts)
             return

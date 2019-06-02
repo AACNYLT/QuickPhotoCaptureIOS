@@ -111,6 +111,8 @@ class ScoutTableViewController: UITableViewController, UINavigationControllerDel
         self.present(alert, animated: true)
     }
     
+    // MARK: Course Filtering
+    
     // MARK: Image stuff
     func takePhoto(scout: Scout, source: UIImagePickerController.SourceType) {
         selectedScout = scout;
@@ -327,7 +329,18 @@ extension ScoutTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
         let scout = isFiltering() ? filteredScouts[indexPath.row] : scouts[indexPath.row]
-        let scoutUnit = scout.CourseID != nil ? scout.CourseID! % 2 == 0 ? "Blue" : "Red" : nil
+        let scoutUnit = scout.CourseID != nil ? { () -> String? in
+            switch (scout.CourseID! % 10) {
+            case 1:
+                return "Red"
+            case 2:
+                return "Blue"
+            case 3:
+                return "Silver"
+            default:
+                return nil
+            }
+            }() : nil
         cell.textLabel?.text = scout.FirstName + " " + scout.LastName
         cell.detailTextLabel?.text = scout.Team != nil && scoutUnit != nil ? scoutUnit! + " - " + scout.Team! : nil
         // instantiating file manager to pull image from documents library
