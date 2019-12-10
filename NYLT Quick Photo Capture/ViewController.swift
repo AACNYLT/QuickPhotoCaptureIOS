@@ -9,6 +9,7 @@
 import UIKit
 import MobileCoreServices
 import Zip
+import SwiftCSV
 
 class ScoutTableViewController: UITableViewController, UINavigationControllerDelegate {
     
@@ -181,8 +182,8 @@ class ScoutTableViewController: UITableViewController, UINavigationControllerDel
     }
     
     // MARK: document stuff
-    func openJson() {
-        let documentPicker = UIDocumentPickerViewController(documentTypes: [String(kUTTypeJSON)], in: .import)
+    func openFile() {
+        let documentPicker = UIDocumentPickerViewController(documentTypes: [String(kUTTypeJSON), String(kUTTypeCommaSeparatedText)], in: .import)
         documentPicker.delegate = self
         documentPicker.allowsMultipleSelection = false
         self.present(documentPicker, animated: true)
@@ -226,7 +227,7 @@ class ScoutTableViewController: UITableViewController, UINavigationControllerDel
     @IBAction func showImportMenu(_ sender: UIBarButtonItem) {
         let alert = UIAlertController(title: "Load Scouts", message: "Populate the app with scouts. NOTE: this will replace any scouts already in the app.", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Open File", style: .default, handler: {(action: UIAlertAction) -> Void in
-            self.openJson()
+            self.openFile()
         }))
         alert.addAction(UIAlertAction(title: "Download from CampHub", style: .default, handler:{(action: UIAlertAction) -> Void in
             self.getScouts()
@@ -242,8 +243,10 @@ class ScoutTableViewController: UITableViewController, UINavigationControllerDel
         alert.popoverPresentationController?.barButtonItem = sender
         self.present(alert, animated: true)
     }
-    
-    // MARK: general utils
+}
+
+// MARK: utils
+extension ScoutTableViewController {
     func Notify(message: String, title: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
@@ -273,7 +276,7 @@ class ScoutTableViewController: UITableViewController, UINavigationControllerDel
     }
 }
 
-// MARK: document stuff
+// MARK: document picker extension
 extension ScoutTableViewController: UIDocumentPickerDelegate {
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
         guard let fileContents = try? String(contentsOf: urls.first!) else {
@@ -281,25 +284,36 @@ extension ScoutTableViewController: UIDocumentPickerDelegate {
             return
         }
         let data = fileContents.data(using: .utf8)!
-        let decoder = JSONDecoder()
-        //        guard let scoutResults = try? decoder.decode([Scout].self, from: data) else {
-        //            self.Notify(message: "We couldn't decode the file you selected.", title: "Error")
-        //            return
-        //        }
         var scoutResults: [Scout] = []
-        do {
-            try scoutResults = decoder.decode([Scout].self, from: data)
-        } catch {
-            self.Notify(message: "We couldn't decode the file you selected.", title: "Error")
-            print(error)
-            return
+        if (urls.first?.pathExtension == "json") {
+            let decoder = JSONDecoder()
+            do {
+                try scoutResults = decoder.decode([Scout].self, from: data)
+            } catch {
+                self.Notify(message: "We couldn't decode the file you selected.", title: "Error")
+                print(error)
+                return
+            }
+        } else if (urls.first?.pathExtension == "csv") {
+            do {
+                var cleanedString = fileContents.replacingOccurrences(of: "\r", with: "\n")
+                cleanedString = cleanedString.replacingOccurrences(of: "\n\n\n", with: "\n")
+                let csv = try CSV(string: cleanedString)
+                for row in csv.namedRows {
+                    scoutResults.append(Scout(ScoutID: Int(row["Applicant ID"] ?? "0") ?? 0, FirstName: row["First Name"] ?? "", LastName: row["Last Name"] ?? "", Team: nil, CourseID: nil))
+                }
+            } catch {
+                self.Notify(message: "We couldn't parse the file you selected.", title: "Error")
+                print(error)
+                return
+            }
         }
         self.scouts = scoutResults
         self.tableView.reloadData()
     }
 }
 
-// MARK: image stuff
+// MARK: image picker extension
 extension ScoutTableViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
         imagePicker.dismiss(animated: true, completion: nil)
@@ -315,7 +329,7 @@ extension ScoutTableViewController: UIImagePickerControllerDelegate {
     }
 }
 
-// MARK: table stuff
+// MARK: table extension
 extension ScoutTableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -377,23 +391,4 @@ extension ScoutTableViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         filterContentForSearchText(searchController.searchBar.text!)
     }
-}
-
-
-struct Scout: Codable {
-    var ScoutID: Int
-    var FirstName: String
-    var LastName: String
-    var Team: String?
-    var CourseID: Int?
-}
-
-extension Scout {
-    func fileName() -> String {
-        return self.FirstName + self.LastName + "-" + String(self.ScoutID)
-    }
-}
-
-enum SortField {
-    case FirstName, LastName, Team, Course, Default
 }

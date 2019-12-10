@@ -10,12 +10,11 @@ import Foundation
 import UIKit
 
 class CampHubScouts {
-    let scoutURL = URL(string: "https://nyltcamphub.azurewebsites.net/scouts")
     let baseURL = "https://nyltcamphub.azurewebsites.net/scouts/"
     
     func get(withCompletion completion: @escaping ([Scout]?) -> Void) {
         let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: .main)
-        let task = session.dataTask(with: self.scoutURL!, completionHandler: {(data: Data?, response: URLResponse?, error: Error?) -> Void in
+        let task = session.dataTask(with: URL(string: self.baseURL)!, completionHandler: {(data: Data?, response: URLResponse?, error: Error?) -> Void in
             guard let data = data else {
                 completion(nil)
                 return

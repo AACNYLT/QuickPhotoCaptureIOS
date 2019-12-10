@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/aroonnarayanan/workspaces/NYLT Quick Photo Capture/NYLT Quick Photo Capture.xcodeproj">
+      location = "group:NYLT Quick Photo Capture.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
