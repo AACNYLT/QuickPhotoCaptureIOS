@@ -112,17 +112,52 @@ class ScoutTableViewController: UITableViewController, UINavigationControllerDel
         self.present(alert, animated: true)
     }
     
-    // MARK: Course Filtering
+    /// MARK: Course Filtering
     
     // MARK: Image stuff
-    func takePhoto(scout: Scout, source: UIImagePickerController.SourceType) {
-        selectedScout = scout;
+    func takePhotoOrVideo(scout: Scout, source: UIImagePickerController.SourceType, type: UIImagePickerController.CameraCaptureMode) {
+        selectedScout = scout
         imagePicker =  UIImagePickerController()
+        if (type == .video) {
+            imagePicker.mediaTypes = [kUTTypeMovie as String]
+        } else {
+            imagePicker.mediaTypes = [kUTTypeImage as String]
+        }
         imagePicker.delegate = self
         imagePicker.sourceType = source
-        imagePicker.allowsEditing = true
+        imagePicker.allowsEditing = (type != .video)
+        if (source != .photoLibrary) {
+            imagePicker.cameraCaptureMode = type
+        }
         present(imagePicker, animated: true, completion: nil)
     }
+    
+    func createScoutMenu(scout: Scout) -> UIMenu {
+        let library = UIAction(title: "Existing Photo", image: UIImage(systemName: "photo.on.rectangle")) {action in
+            self.takePhotoOrVideo(scout: scout, source: .photoLibrary, type: .photo)
+        }
+        let video = UIAction(title: "Video", image: UIImage(systemName: "video")) {action in
+            self.takePhotoOrVideo(scout: scout, source: .camera, type: .video)
+        }
+        
+        return UIMenu(title: "Other Capture Options", children: [library, video])
+    }
+    
+    //    func showScoutMenu(scout: Scout) -> Void {
+    //        let alert = UIAlertController(title: scout.FirstName + " " + scout.LastName, message: "Choose an option below", preferredStyle: .actionSheet)
+    //        alert.addAction(UIAlertAction(title: "Take Photo", style: .default, handler: {action in
+    //            self.takePhoto(scout: scout, source: .camera)
+    //        }))
+    //        alert.addAction(UIAlertAction(title: "Existing Photo", style: .default, handler:{action in
+    //            self.takePhoto(scout: scout, source: .photoLibrary)
+    //        }))
+    //        alert.addAction(UIAlertAction(title: "Take Video", style: .default, handler: {action in
+    //
+    //        }))
+    //        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+    //        alert.popoverPresentationController?.barButtonItem = sender
+    //        self.present(alert, animated: true)
+    //    }
     
     func clearDocuments() {
         let fileManager = FileManager.default
@@ -189,12 +224,12 @@ class ScoutTableViewController: UITableViewController, UINavigationControllerDel
         self.present(documentPicker, animated: true)
     }
     
-    func saveZip(_ sender: UIBarButtonItem) {
+    func saveZip(_ sender: UIBarButtonItem, zipType: CaptureType) {
         self.ShowProgressSpinner(message: "Creating ZIP file...")
         var scoutImagePaths = [URL]()
         let documentsURL = try! FileManager().url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
         for scout in scouts {
-            let path = documentsURL.appendingPathComponent(scout.fileName() + ".jpg")
+            let path = zipType == .Video ? documentsURL.appendingPathComponent(scout.fileName() + ".mp4") : documentsURL.appendingPathComponent(scout.fileName() + ".jpg")
             if (FileManager().fileExists(atPath: path.path)) {
                 scoutImagePaths.append(path)
             }
@@ -213,8 +248,11 @@ class ScoutTableViewController: UITableViewController, UINavigationControllerDel
     // MARK: menus
     @IBAction func showExportMenu(_ sender: UIBarButtonItem) {
         let alert = UIAlertController(title: "Export", message: "Export the photos you've taken online or locally in a file.", preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Save to File", style: .default, handler: {(action: UIAlertAction) -> Void in
-            self.saveZip(sender)
+        alert.addAction(UIAlertAction(title: "Save Photos to File", style: .default, handler: {(action: UIAlertAction) -> Void in
+            self.saveZip(sender, zipType: .Photo)
+        }))
+        alert.addAction(UIAlertAction(title: "Save Videos to File", style: .default, handler: {(action: UIAlertAction) -> Void in
+            self.saveZip(sender, zipType: .Video)
         }))
         alert.addAction(UIAlertAction(title: "Upload to CampHub", style: .default, handler: {(action: UIAlertAction) -> Void in
             self.prepareUploadImage()
@@ -226,13 +264,13 @@ class ScoutTableViewController: UITableViewController, UINavigationControllerDel
     
     @IBAction func showImportMenu(_ sender: UIBarButtonItem) {
         let alert = UIAlertController(title: "Load Scouts", message: "Populate the app with scouts. NOTE: this will replace any scouts already in the app.", preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Open File", style: .default, handler: {(action: UIAlertAction) -> Void in
+        alert.addAction(UIAlertAction(title: "Open File", style: .default, handler: {action in
             self.openFile()
         }))
-        alert.addAction(UIAlertAction(title: "Download from CampHub", style: .default, handler:{(action: UIAlertAction) -> Void in
+        alert.addAction(UIAlertAction(title: "Download from CampHub", style: .default, handler:{action in
             self.getScouts()
         }))
-        alert.addAction(UIAlertAction(title: "Clear Existing Photos", style: .destructive, handler: {(action: UIAlertAction) -> Void in
+        alert.addAction(UIAlertAction(title: "Clear Existing Photos", style: .destructive, handler: {action in
             self.AskYesNo(message: "Are you sure you want to delete all existing photos? This will also clear any other documents stored in this app's folder, and cannot be undone.", title: "Warning", withCompletion: {(result: Bool) -> Void in
                 if (result) {
                     self.clearDocuments()
@@ -296,9 +334,7 @@ extension ScoutTableViewController: UIDocumentPickerDelegate {
             }
         } else if (urls.first?.pathExtension == "csv") {
             do {
-                var cleanedString = fileContents.replacingOccurrences(of: "\r", with: "\n")
-                cleanedString = cleanedString.replacingOccurrences(of: "\n\n\n", with: "\n")
-                let csv = try CSV(string: cleanedString)
+                let csv = try CSV(string: fileContents.replacingOccurrences(of: "\r", with: ""))
                 for row in csv.namedRows {
                     scoutResults.append(Scout(ScoutID: Int(row["Applicant ID"] ?? "0") ?? 0, FirstName: row["First Name"] ?? "", LastName: row["Last Name"] ?? "", Team: nil, CourseID: nil))
                 }
@@ -319,12 +355,24 @@ extension ScoutTableViewController: UIImagePickerControllerDelegate {
         imagePicker.dismiss(animated: true, completion: nil)
         let fileManager = FileManager.default
         let documentsPath = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
-        let imagePath = documentsPath?.appendingPathComponent(selectedScout.fileName() + ".jpg")
-        if let takenImage = info[.editedImage] as? UIImage {
-            try? takenImage.jpegData(compressionQuality: 0.5)?.write(to: imagePath!)
-            self.tableView.reloadData()
+        if (info[.mediaType] as! CFString == kUTTypeImage) {
+            let imagePath = documentsPath?.appendingPathComponent(selectedScout.fileName() + ".jpg")
+            if let takenImage = info[.editedImage] as? UIImage {
+                try? takenImage.jpegData(compressionQuality: 0.5)?.write(to: imagePath!)
+                self.tableView.reloadData()
+            } else {
+                return
+            }
         } else {
-            return
+            let videoPath = documentsPath?.appendingPathComponent(selectedScout.fileName() + ".mp4")
+            if let videoURL = info[.mediaURL] as? URL {
+                UISaveVideoAtPathToSavedPhotosAlbum(videoURL.relativePath, self, nil, nil)
+                let videoData = try? Data(contentsOf: videoURL)
+                try? videoData?.write(to: videoPath!)
+                self.tableView.reloadData()
+            } else {
+                return
+            }
         }
     }
 }
@@ -371,18 +419,27 @@ extension ScoutTableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let libraryAction = UITableViewRowAction(style: .normal, title: "Existing Photo", handler: { (action, selectedIndexPath) in
-            let scout = self.isFiltering() ? self.filteredScouts[selectedIndexPath.row] : self.scouts[selectedIndexPath.row]
-            self.takePhoto(scout: scout, source: .photoLibrary)
-        })
-        return [libraryAction]
-    }
+    //    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+    //        let libraryAction = UITableViewRowAction(style: .normal, title: "Existing Photo", handler: { (action, selectedIndexPath) in
+    //            let scout = self.isFiltering() ? self.filteredScouts[selectedIndexPath.row] : self.scouts[selectedIndexPath.row]
+    //            self.takePhoto(scout: scout, source: .photoLibrary)
+    //        })
+    //        return [libraryAction]
+    //    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let scout = isFiltering() ? filteredScouts[indexPath.row] : scouts[indexPath.row];
-        takePhoto(scout: scout, source: .camera)
+        
+        takePhotoOrVideo(scout: scout, source: .camera, type: .photo)
+    }
+    
+    override func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        let scout = isFiltering() ? filteredScouts[indexPath.row] : scouts[indexPath.row];
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil, actionProvider: {suggestedActions in
+            
+            return self.createScoutMenu(scout: scout)
+        })
     }
 }
 

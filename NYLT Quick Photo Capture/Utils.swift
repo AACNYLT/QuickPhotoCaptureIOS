@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Scout: Codable {
     var ScoutID: Int
@@ -14,6 +15,10 @@ struct Scout: Codable {
     var LastName: String
     var Team: String?
     var CourseID: Int?
+}
+
+enum CaptureType {
+    case Photo, Video
 }
 
 extension Scout {
@@ -24,4 +29,10 @@ extension Scout {
 
 enum SortField {
     case FirstName, LastName, Team, Course, Default
+}
+
+
+class ScoutService {
+    func addScouts(scouts: [Scout]) -> Void {
+    }
 }
