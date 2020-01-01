@@ -14,6 +14,11 @@
 		C08A800422A35FCF0051E467 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C08A800322A35FCF0051E467 /* Settings.bundle */; };
 		C0DA9A4721A9E374000CDD83 /* ServerOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DA9A4621A9E374000CDD83 /* ServerOperations.swift */; };
 		C0DD35EB23BD1CF6009867D8 /* ViewController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DD35EA23BD1CF6009867D8 /* ViewController+Utils.swift */; };
+		C0DD35ED23BD3073009867D8 /* ViewController+Documents.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DD35EC23BD3073009867D8 /* ViewController+Documents.swift */; };
+		C0DD35EF23BD3105009867D8 /* ViewController+Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DD35EE23BD3105009867D8 /* ViewController+Search.swift */; };
+		C0DD35F123BD3114009867D8 /* ViewController+ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DD35F023BD3114009867D8 /* ViewController+ImagePicker.swift */; };
+		C0DD35F323BD31CF009867D8 /* ViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DD35F223BD31CF009867D8 /* ViewController+TableView.swift */; };
+		C0DD35F523BD3D2D009867D8 /* AddScout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DD35F423BD3D2D009867D8 /* AddScout.swift */; };
 		C0E1E14E21A89C1B001AC5E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E1E14D21A89C1B001AC5E4 /* AppDelegate.swift */; };
 		C0E1E15021A89C1B001AC5E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E1E14F21A89C1B001AC5E4 /* ViewController.swift */; };
 		C0E1E15321A89C1B001AC5E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0E1E15121A89C1B001AC5E4 /* Main.storyboard */; };
@@ -44,6 +49,11 @@
 		C0A701232380836200366BFA /* NYLT Quick Photo Capture.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "NYLT Quick Photo Capture.entitlements"; sourceTree = "<group>"; };
 		C0DA9A4621A9E374000CDD83 /* ServerOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerOperations.swift; sourceTree = "<group>"; };
 		C0DD35EA23BD1CF6009867D8 /* ViewController+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Utils.swift"; sourceTree = "<group>"; };
+		C0DD35EC23BD3073009867D8 /* ViewController+Documents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Documents.swift"; sourceTree = "<group>"; };
+		C0DD35EE23BD3105009867D8 /* ViewController+Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Search.swift"; sourceTree = "<group>"; };
+		C0DD35F023BD3114009867D8 /* ViewController+ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+ImagePicker.swift"; sourceTree = "<group>"; };
+		C0DD35F223BD31CF009867D8 /* ViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+TableView.swift"; sourceTree = "<group>"; };
+		C0DD35F423BD3D2D009867D8 /* AddScout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScout.swift; sourceTree = "<group>"; };
 		C0E1E14A21A89C1B001AC5E4 /* NYLT Quick Photo Capture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NYLT Quick Photo Capture.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0E1E14D21A89C1B001AC5E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0E1E14F21A89C1B001AC5E4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -132,6 +142,11 @@
 				C08A800322A35FCF0051E467 /* Settings.bundle */,
 				C00917CB239F4B4D00D4DEBB /* Utils.swift */,
 				C0DD35EA23BD1CF6009867D8 /* ViewController+Utils.swift */,
+				C0DD35EC23BD3073009867D8 /* ViewController+Documents.swift */,
+				C0DD35EE23BD3105009867D8 /* ViewController+Search.swift */,
+				C0DD35F023BD3114009867D8 /* ViewController+ImagePicker.swift */,
+				C0DD35F223BD31CF009867D8 /* ViewController+TableView.swift */,
+				C0DD35F423BD3D2D009867D8 /* AddScout.swift */,
 			);
 			path = "NYLT Quick Photo Capture";
 			sourceTree = "<group>";
@@ -319,9 +334,14 @@
 			files = (
 				C0E1E15021A89C1B001AC5E4 /* ViewController.swift in Sources */,
 				C0DD35EB23BD1CF6009867D8 /* ViewController+Utils.swift in Sources */,
+				C0DD35F523BD3D2D009867D8 /* AddScout.swift in Sources */,
 				C0E1E14E21A89C1B001AC5E4 /* AppDelegate.swift in Sources */,
+				C0DD35EF23BD3105009867D8 /* ViewController+Search.swift in Sources */,
+				C0DD35F123BD3114009867D8 /* ViewController+ImagePicker.swift in Sources */,
 				C0DA9A4721A9E374000CDD83 /* ServerOperations.swift in Sources */,
 				C00917CC239F4B4D00D4DEBB /* Utils.swift in Sources */,
+				C0DD35ED23BD3073009867D8 /* ViewController+Documents.swift in Sources */,
+				C0DD35F323BD31CF009867D8 /* ViewController+TableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,9 +506,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "NYLT Quick Photo Capture/NYLT Quick Photo Capture.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = 7V888RBLR5;
+				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/Pods/**";
 				INFOPLIST_FILE = "NYLT Quick Photo Capture/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -496,6 +519,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.aacnylt.NYLT-Quick-Photo-Capture";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -511,9 +535,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "NYLT Quick Photo Capture/NYLT Quick Photo Capture.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = 7V888RBLR5;
+				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/Pods/**";
 				INFOPLIST_FILE = "NYLT Quick Photo Capture/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -521,6 +548,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.aacnylt.NYLT-Quick-Photo-Capture";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;

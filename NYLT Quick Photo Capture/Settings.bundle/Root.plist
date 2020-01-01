@@ -15,6 +15,34 @@
 			<string>Minimum Course ID</string>
 			<key>Key</key>
 			<string>mincourseid</string>
+			<key>KeyboardType</key>
+			<string>NumberPad</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>Capture Behavior</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Save Videos to Photo Library</string>
+			<key>Key</key>
+			<string>videosinlibrary</string>
+			<key>DefaultValue</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Save Photos to Photo Library</string>
+			<key>Key</key>
+			<string>photosinlibrary</string>
+			<key>DefaultValue</key>
+			<false/>
 		</dict>
 	</array>
 </dict>

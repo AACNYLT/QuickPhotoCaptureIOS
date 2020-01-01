@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 import MobileCoreServices
 import Zip
 import SwiftCSV
@@ -113,23 +114,6 @@ class ScoutTableViewController: UITableViewController, UINavigationControllerDel
     /// MARK: Course Filtering
     
     // MARK: Image stuff
-    func takePhotoOrVideo(scout: Scout, source: UIImagePickerController.SourceType, type: UIImagePickerController.CameraCaptureMode) {
-        selectedScout = scout
-        imagePicker =  UIImagePickerController()
-        if (type == .video) {
-            imagePicker.mediaTypes = [kUTTypeMovie as String]
-        } else {
-            imagePicker.mediaTypes = [kUTTypeImage as String]
-        }
-        imagePicker.delegate = self
-        imagePicker.sourceType = source
-        imagePicker.allowsEditing = (type != .video)
-        if (source != .photoLibrary) {
-            imagePicker.cameraCaptureMode = type
-        }
-        present(imagePicker, animated: true, completion: nil)
-    }
-    
     func createScoutMenu(scout: Scout) -> UIMenu {
         let library = UIAction(title: "Existing Photo", image: UIImage(systemName: "photo.on.rectangle")) {action in
             self.takePhotoOrVideo(scout: scout, source: .photoLibrary, type: .photo)
@@ -140,22 +124,6 @@ class ScoutTableViewController: UITableViewController, UINavigationControllerDel
         
         return UIMenu(title: "Other Capture Options", children: [library, video])
     }
-    
-    //    func showScoutMenu(scout: Scout) -> Void {
-    //        let alert = UIAlertController(title: scout.FirstName + " " + scout.LastName, message: "Choose an option below", preferredStyle: .actionSheet)
-    //        alert.addAction(UIAlertAction(title: "Take Photo", style: .default, handler: {action in
-    //            self.takePhoto(scout: scout, source: .camera)
-    //        }))
-    //        alert.addAction(UIAlertAction(title: "Existing Photo", style: .default, handler:{action in
-    //            self.takePhoto(scout: scout, source: .photoLibrary)
-    //        }))
-    //        alert.addAction(UIAlertAction(title: "Take Video", style: .default, handler: {action in
-    //
-    //        }))
-    //        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-    //        alert.popoverPresentationController?.barButtonItem = sender
-    //        self.present(alert, animated: true)
-    //    }
     
     func clearDocuments() {
         let fileManager = FileManager.default
@@ -277,140 +245,10 @@ class ScoutTableViewController: UITableViewController, UINavigationControllerDel
         alert.popoverPresentationController?.barButtonItem = sender
         self.present(alert, animated: true)
     }
-}
-
-// MARK: document picker extension
-extension ScoutTableViewController: UIDocumentPickerDelegate {
-    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
-        guard let fileContents = try? String(contentsOf: urls.first!) else {
-            self.Notify(message: "We couldn't read the file you selected.", title: "Error")
-            return
-        }
-        let data = fileContents.data(using: .utf8)!
-        var scoutResults: [Scout] = []
-        if (urls.first?.pathExtension == "json") {
-            let decoder = JSONDecoder()
-            do {
-                try scoutResults = decoder.decode([Scout].self, from: data)
-            } catch {
-                self.Notify(message: "We couldn't decode the file you selected.", title: "Error")
-                print(error)
-                return
-            }
-        } else if (urls.first?.pathExtension == "csv") {
-            do {
-                let csv = try CSV(string: fileContents.replacingOccurrences(of: "\r", with: ""))
-                for row in csv.namedRows {
-                    scoutResults.append(Scout(ScoutID: Int(row["Applicant ID"] ?? "0") ?? 0, FirstName: row["First Name"] ?? "", LastName: row["Last Name"] ?? "", Team: nil, CourseID: nil))
-                }
-            } catch {
-                self.Notify(message: "We couldn't parse the file you selected.", title: "Error")
-                print(error)
-                return
-            }
-        }
-        self.scouts = scoutResults
-        self.tableView.reloadData()
-    }
-}
-
-// MARK: image picker extension
-extension ScoutTableViewController: UIImagePickerControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
-        imagePicker.dismiss(animated: true, completion: nil)
-        let fileManager = FileManager.default
-        let documentsPath = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
-        if (info[.mediaType] as! CFString == kUTTypeImage) {
-            let imagePath = documentsPath?.appendingPathComponent(selectedScout.fileName() + ".jpg")
-            if let takenImage = info[.editedImage] as? UIImage {
-                try? takenImage.jpegData(compressionQuality: 0.5)?.write(to: imagePath!)
-                self.tableView.reloadData()
-            } else {
-                return
-            }
-        } else {
-            let videoPath = documentsPath?.appendingPathComponent(selectedScout.fileName() + ".mp4")
-            if let videoURL = info[.mediaURL] as? URL {
-                UISaveVideoAtPathToSavedPhotosAlbum(videoURL.relativePath, self, nil, nil)
-                let videoData = try? Data(contentsOf: videoURL)
-                try? videoData?.write(to: videoPath!)
-                self.tableView.reloadData()
-            } else {
-                return
-            }
-        }
-    }
-}
-
-// MARK: table extension
-extension ScoutTableViewController {
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+    
+    @IBSegueAction func loadAddScoutModal(_ coder: NSCoder) -> UIViewController? {
+        return UIHostingController(coder: coder, rootView: AddScout())
     }
     
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return isFiltering() ? filteredScouts.count : scouts.count
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
-        let scout = isFiltering() ? filteredScouts[indexPath.row] : scouts[indexPath.row]
-        let scoutUnit = scout.CourseID != nil ? { () -> String? in
-            switch (scout.CourseID! % 10) {
-            case 1:
-                return "Red"
-            case 2:
-                return "Blue"
-            case 3:
-                return "Silver"
-            default:
-                return nil
-            }
-            }() : nil
-        cell.textLabel?.text = scout.FirstName + " " + scout.LastName
-        cell.detailTextLabel?.text = scout.Team != nil && scoutUnit != nil ? scoutUnit! + " - " + scout.Team! : nil
-        // instantiating file manager to pull image from documents library
-        let fileManager = FileManager.default
-        let documentsPath = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
-        let imagePath = documentsPath!.appendingPathComponent(scout.fileName() + ".jpg")
-        if let imageData = try? Data(contentsOf: imagePath) {
-            let scoutImage = UIImage(data: imageData)
-            cell.imageView?.image = scoutImage
-            cell.imageView?.contentMode = .scaleAspectFill
-        } else {
-            cell.imageView?.image = nil
-        }
-        return cell
-    }
-    
-    //    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-    //        let libraryAction = UITableViewRowAction(style: .normal, title: "Existing Photo", handler: { (action, selectedIndexPath) in
-    //            let scout = self.isFiltering() ? self.filteredScouts[selectedIndexPath.row] : self.scouts[selectedIndexPath.row]
-    //            self.takePhoto(scout: scout, source: .photoLibrary)
-    //        })
-    //        return [libraryAction]
-    //    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        let scout = isFiltering() ? filteredScouts[indexPath.row] : scouts[indexPath.row];
-        
-        takePhotoOrVideo(scout: scout, source: .camera, type: .photo)
-    }
-    
-    override func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-        let scout = isFiltering() ? filteredScouts[indexPath.row] : scouts[indexPath.row];
-        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil, actionProvider: {suggestedActions in
-            
-            return self.createScoutMenu(scout: scout)
-        })
-    }
-}
-
-// MARK: search stuff
-extension ScoutTableViewController: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-        filterContentForSearchText(searchController.searchBar.text!)
-    }
 }
