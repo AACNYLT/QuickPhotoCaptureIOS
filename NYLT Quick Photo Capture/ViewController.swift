@@ -17,10 +17,8 @@ class ScoutTableViewController: UITableViewController, UINavigationControllerDel
     var scouts: [Scout] = []
     var filteredScouts = [Scout]()
     func getScouts() {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         self.ShowProgressSpinner(message: "Downloading...")
         CampHubScouts().get(withCompletion: {(scoutResults: [Scout]?) -> Void in
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
             self.dismiss(animated: true, completion: nil)
             if (scoutResults == nil) {
                 self.Notify(message: "We weren't able to load scouts - make sure you have an internet connection.", title: "Error")
@@ -196,9 +194,7 @@ class ScoutTableViewController: UITableViewController, UINavigationControllerDel
         let scout = uploadScouts.popLast()!
         let documentsURL = try! FileManager().url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
         let path = documentsURL.appendingPathComponent(scout.fileName() + ".jpg")
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         CampHubScouts().upload(ScoutID: scout.ScoutID, image: UIImage(contentsOfFile: path.path)!, withCompletion: {(results: Any?) -> Void in
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
             uploadResults.append(results != nil)
             if (uploadScouts.count > 0) {
                 self.uploadImageRecursive(uploadResults, uploadScouts: uploadScouts)
@@ -280,37 +276,6 @@ class ScoutTableViewController: UITableViewController, UINavigationControllerDel
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.popoverPresentationController?.barButtonItem = sender
         self.present(alert, animated: true)
-    }
-}
-
-// MARK: utils
-extension ScoutTableViewController {
-    func Notify(message: String, title: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
-        self.present(alert, animated: true)
-    }
-    
-    func AskYesNo(message: String, title: String, withCompletion completion: @escaping (Bool) -> Void) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {(action: UIAlertAction) -> Void in
-            completion(true)
-        }))
-        alert.addAction(UIAlertAction(title: "No", style: .default, handler: {(action: UIAlertAction) -> Void in
-            completion(false)
-        }))
-        self.present(alert, animated: true)
-    }
-    
-    func ShowProgressSpinner(message: String) {
-        let progressPopup = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        let progressSpinner = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
-        progressSpinner.hidesWhenStopped = true
-        progressSpinner.style = .gray
-        progressSpinner.startAnimating()
-        
-        progressPopup.view.addSubview(progressSpinner)
-        present(progressPopup, animated: true)
     }
 }
 
