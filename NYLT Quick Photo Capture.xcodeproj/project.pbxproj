@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		899E6E02F68B6A563A7F1715 /* Pods_NYLT_Quick_Photo_Capture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C777D1C0B35389EF618BFA3 /* Pods_NYLT_Quick_Photo_Capture.framework */; };
 		965ED9E647382EA74CC786A2 /* Pods_NYLT_Quick_Photo_CaptureTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAE4B9802EC5E7E76C7037D0 /* Pods_NYLT_Quick_Photo_CaptureTests.framework */; };
 		C00917CC239F4B4D00D4DEBB /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00917CB239F4B4D00D4DEBB /* Utils.swift */; };
 		C05DB92721AB91C700DAB4ED /* ItunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C05DB92621AB91C700DAB4ED /* ItunesArtwork@2x.png */; };
+		C089F1D723E3EC4B0096548E /* Pods_NYLT_Quick_Photo_Capture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C777D1C0B35389EF618BFA3 /* Pods_NYLT_Quick_Photo_Capture.framework */; };
 		C08A800422A35FCF0051E467 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C08A800322A35FCF0051E467 /* Settings.bundle */; };
+		C09321FB23E3F01B00D0546F /* Pods_NYLT_Quick_Photo_Capture.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0C777D1C0B35389EF618BFA3 /* Pods_NYLT_Quick_Photo_Capture.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C0DA9A4721A9E374000CDD83 /* ServerOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DA9A4621A9E374000CDD83 /* ServerOperations.swift */; };
 		C0DD35EB23BD1CF6009867D8 /* ViewController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DD35EA23BD1CF6009867D8 /* ViewController+Utils.swift */; };
 		C0DD35ED23BD3073009867D8 /* ViewController+Documents.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DD35EC23BD3073009867D8 /* ViewController+Documents.swift */; };
@@ -36,6 +37,19 @@
 			remoteInfo = "NYLT Quick Photo Capture";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C09321FA23E3EFF300D0546F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C09321FB23E3F01B00D0546F /* Pods_NYLT_Quick_Photo_Capture.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0C777D1C0B35389EF618BFA3 /* Pods_NYLT_Quick_Photo_Capture.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NYLT_Quick_Photo_Capture.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,7 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				899E6E02F68B6A563A7F1715 /* Pods_NYLT_Quick_Photo_Capture.framework in Frameworks */,
+				C089F1D723E3EC4B0096548E /* Pods_NYLT_Quick_Photo_Capture.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,6 +186,7 @@
 				C0E1E14721A89C1B001AC5E4 /* Frameworks */,
 				C0E1E14821A89C1B001AC5E4 /* Resources */,
 				08590B657550A05D70D84DA9 /* [CP] Embed Pods Frameworks */,
+				C09321FA23E3EFF300D0546F /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -512,7 +527,6 @@
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = 7V888RBLR5;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/Pods/**";
 				INFOPLIST_FILE = "NYLT Quick Photo Capture/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -541,7 +555,6 @@
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = 7V888RBLR5;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/Pods/**";
 				INFOPLIST_FILE = "NYLT Quick Photo Capture/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
