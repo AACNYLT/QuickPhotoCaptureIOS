@@ -10,7 +10,6 @@
 		899E6E02F68B6A563A7F1715 /* Pods_NYLT_Quick_Photo_Capture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C777D1C0B35389EF618BFA3 /* Pods_NYLT_Quick_Photo_Capture.framework */; };
 		965ED9E647382EA74CC786A2 /* Pods_NYLT_Quick_Photo_CaptureTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAE4B9802EC5E7E76C7037D0 /* Pods_NYLT_Quick_Photo_CaptureTests.framework */; };
 		C00917CC239F4B4D00D4DEBB /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00917CB239F4B4D00D4DEBB /* Utils.swift */; };
-		C05DB92721AB91C700DAB4ED /* ItunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C05DB92621AB91C700DAB4ED /* ItunesArtwork@2x.png */; };
 		C08A800422A35FCF0051E467 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C08A800322A35FCF0051E467 /* Settings.bundle */; };
 		C0DA9A4721A9E374000CDD83 /* ServerOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DA9A4621A9E374000CDD83 /* ServerOperations.swift */; };
 		C0DD35EB23BD1CF6009867D8 /* ViewController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DD35EA23BD1CF6009867D8 /* ViewController+Utils.swift */; };
@@ -44,7 +43,6 @@
 		8F5722A797313C37AB192893 /* Pods-NYLT Quick Photo CaptureTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYLT Quick Photo CaptureTests.release.xcconfig"; path = "Target Support Files/Pods-NYLT Quick Photo CaptureTests/Pods-NYLT Quick Photo CaptureTests.release.xcconfig"; sourceTree = "<group>"; };
 		A50E9D3CFF7A421E4C3F6F59 /* Pods-NYLT Quick Photo CaptureTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYLT Quick Photo CaptureTests.debug.xcconfig"; path = "Target Support Files/Pods-NYLT Quick Photo CaptureTests/Pods-NYLT Quick Photo CaptureTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C00917CB239F4B4D00D4DEBB /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		C05DB92621AB91C700DAB4ED /* ItunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ItunesArtwork@2x.png"; path = "../../../Downloads/camera-icon/ios/AppIcon.appiconset/ItunesArtwork@2x.png"; sourceTree = "<group>"; };
 		C08A800322A35FCF0051E467 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		C0A701232380836200366BFA /* NYLT Quick Photo Capture.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "NYLT Quick Photo Capture.entitlements"; sourceTree = "<group>"; };
 		C0DA9A4621A9E374000CDD83 /* ServerOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerOperations.swift; sourceTree = "<group>"; };
@@ -138,7 +136,6 @@
 				C0E1E15621A89C1C001AC5E4 /* LaunchScreen.storyboard */,
 				C0E1E15921A89C1C001AC5E4 /* Info.plist */,
 				C0DA9A4621A9E374000CDD83 /* ServerOperations.swift */,
-				C05DB92621AB91C700DAB4ED /* ItunesArtwork@2x.png */,
 				C08A800322A35FCF0051E467 /* Settings.bundle */,
 				C00917CB239F4B4D00D4DEBB /* Utils.swift */,
 				C0DD35EA23BD1CF6009867D8 /* ViewController+Utils.swift */,
@@ -208,7 +205,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1010;
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = "Atlanta Area Council NYLT";
 				TargetAttributes = {
 					C0E1E14921A89C1B001AC5E4 = {
@@ -250,7 +247,6 @@
 				C0E1E15521A89C1C001AC5E4 /* Assets.xcassets in Resources */,
 				C08A800422A35FCF0051E467 /* Settings.bundle in Resources */,
 				C0E1E15321A89C1B001AC5E4 /* Main.storyboard in Resources */,
-				C05DB92721AB91C700DAB4ED /* ItunesArtwork@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +405,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -470,6 +467,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -508,9 +506,9 @@
 				CODE_SIGN_ENTITLEMENTS = "NYLT Quick Photo Capture/NYLT Quick Photo Capture.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
-				DEVELOPMENT_TEAM = 7V888RBLR5;
+				DEVELOPMENT_TEAM = H772T9VEX6;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/Pods/**";
 				INFOPLIST_FILE = "NYLT Quick Photo Capture/Info.plist";
@@ -519,8 +517,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.aacnylt.NYLT-Quick-Photo-Capture";
+				MARKETING_VERSION = 1.2;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.aroonnarayanan.NYLT-Quick-Photo-Capture";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
@@ -537,9 +535,9 @@
 				CODE_SIGN_ENTITLEMENTS = "NYLT Quick Photo Capture/NYLT Quick Photo Capture.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
-				DEVELOPMENT_TEAM = 7V888RBLR5;
+				DEVELOPMENT_TEAM = H772T9VEX6;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/Pods/**";
 				INFOPLIST_FILE = "NYLT Quick Photo Capture/Info.plist";
@@ -548,8 +546,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.aacnylt.NYLT-Quick-Photo-Capture";
+				MARKETING_VERSION = 1.2;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.aroonnarayanan.NYLT-Quick-Photo-Capture";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
