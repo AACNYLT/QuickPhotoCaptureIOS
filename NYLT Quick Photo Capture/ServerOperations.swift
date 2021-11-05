@@ -10,11 +10,11 @@ import Foundation
 import UIKit
 
 class CampHubScouts {
-    let baseURL = "https://nyltcamphub.azurewebsites.net/scouts/"
+    let baseURL = "https://nyltcamphub.herokuapp.com/api/"
     
-    func get(withCompletion completion: @escaping ([Scout]?) -> Void) {
+    func get(withCompletion completion: @escaping (Course?) -> Void) {
         let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: .main)
-        let task = session.dataTask(with: URL(string: self.baseURL)!, completionHandler: {(data: Data?, response: URLResponse?, error: Error?) -> Void in
+        let task = session.dataTask(with: URL(string: "\(self.baseURL)/course/")!, completionHandler: {(data: Data?, response: URLResponse?, error: Error?) -> Void in
             guard let data = data else {
                 completion(nil)
                 return
@@ -24,13 +24,7 @@ class CampHubScouts {
                 completion(nil)
                 return
             }
-            if let minCourseIDString = UserDefaults.standard.string(forKey: "mincourseid") {
-                if let minCourseID = Int(minCourseIDString) {
-                    scouts = scouts.filter({ (scout) -> Bool in
-                        return scout.CourseID ?? 0 >= minCourseID
-                    })
-                }
-            }
+            let courseId = UserDefaults.standard.string(forKey: "mincourseid") ?? ""
             completion(scouts)
             return
         })

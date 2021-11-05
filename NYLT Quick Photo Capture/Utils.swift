@@ -10,11 +10,18 @@ import Foundation
 import UIKit
 
 struct Scout: Codable {
-    var ScoutID: Int
-    var FirstName: String
-    var LastName: String
-    var Team: String?
-    var CourseID: Int?
+    var _id: Int
+    var firstName: String
+    var lastName: String
+    var team: String?
+    var course: Course?
+}
+
+struct Course: Codable {
+    var _id: Int
+    var unitName: String
+    var staff: [Scout]
+    var participants: [Scout]
 }
 
 enum CaptureType {
@@ -23,7 +30,7 @@ enum CaptureType {
 
 extension Scout {
     func fileName() -> String {
-        return self.FirstName + self.LastName + "-" + String(self.ScoutID)
+        return String(self._id)
     }
 }
 

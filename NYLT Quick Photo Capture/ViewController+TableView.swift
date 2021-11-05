@@ -22,20 +22,8 @@ extension ScoutTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
         let scout = isFiltering() ? filteredScouts[indexPath.row] : scouts[indexPath.row]
-        let scoutUnit = scout.CourseID != nil ? { () -> String? in
-            switch (scout.CourseID! % 10) {
-            case 1:
-                return "Red"
-            case 2:
-                return "Blue"
-            case 3:
-                return "Silver"
-            default:
-                return nil
-            }
-            }() : nil
-        cell.textLabel?.text = scout.FirstName + " " + scout.LastName
-        cell.detailTextLabel?.text = scout.Team != nil && scoutUnit != nil ? scoutUnit! + " - " + scout.Team! : nil
+        cell.textLabel?.text = "\(scout.firstName) \(scout.lastName)"
+        cell.detailTextLabel?.text = scout.team != nil && scout.course?.unitName != nil ? "\(scout.course!.unitName) \(scout.team!)" : nil
         // instantiating file manager to pull image from documents library
         let fileManager = FileManager.default
         let documentsPath = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
